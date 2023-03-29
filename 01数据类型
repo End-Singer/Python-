@@ -1,0 +1,26 @@
+# 复数
+num = 3 + 4j
+print(type(num))
+# 转字符型 str()
+print(str(10))
+print(str(3.14))
+print(str(True))
+# 转整型int()
+print(int("66666"))  # 字符串需要是整数才能转整型
+print(int(3.14))  # 浮点型转整型会丢失小数部分
+print(int(False))
+# 转浮点型float()
+print(float("111.222"))
+print(float(100))  # 整数会精确到小数点后一位
+print(float(True))  # 布尔型也会精确到小数点后一位
+# 算术运算
+print("10整除3得:" + str(10 // 3))  # print语句内拼接需要为同一种数据类型
+print("10除以3取余得:" + str(10 % 3))
+print("10的3次方为:" + str(10 ** 3))
+# 复合赋值运算符
+a = 0
+for i in range(10):
+    a += 1  # 加1再赋值
+    print(f"a={a}")
+# 比较运算符，返回值是布尔型
+print(0 >= 1)
