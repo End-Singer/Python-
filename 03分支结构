@@ -1,0 +1,31 @@
+# if 判断语句:
+if int(input("")) == 10:  # input和if的嵌套使用
+    print("")
+# 三层判断嵌套，带提示限3次猜数字
+import random
+num = random.randint(1, 10)
+guess = int(input("请输入一个1~10之间的整数: "))
+if guess == num:
+    print("正确")
+else:
+    if guess > num:
+        print("大了")
+    else:
+        print("小了")
+
+    guess = int(input("再次输入: "))
+
+    if guess == num:
+        print("正确")
+    else:
+        if guess > num:
+            print("大了")
+        else:
+            print("小了")
+
+        guess = int(input("最后一次输入: "))
+
+        if guess == num:
+            print("正确")
+        else:
+            print("三次机会用尽")
