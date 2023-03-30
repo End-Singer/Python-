@@ -1,0 +1,19 @@
+# 转义字符
+print("\"hello")  # 通过转义字符实现引号嵌套
+# 也可以"'"，'"'单套双，双套单
+print("hello\n\thi")  # \n换行 \t制表符右对齐
+# 字符串格式化占位型拼接
+print("今年是%d年%s年" % (2022 + 1, "兔"))  # 多个变量占位变量要用括号括起来，按顺序填入，可以格式化表达式
+# 精度控制
+print(f"精度控制\t\t\t百分号宽度.精度:%7.2f" % 12.345)  # m.n 宽度.精度 一般不设置宽度
+# 快速格式化
+print(f"快速格式化\t\tf“【变量】”:今年是{2023}{'兔'}年{2022 + 1}")  # 没法控制精度, 可以格式化表达式
+print(f"字符串转ASCII\tord(字符串):{ord('a')}")
+print(f"ASCII转字符串\tchr(整数):{chr(97)}")
+name = "a公司"
+stock_price = 19.99
+stock_code = "009999"
+growth = 1.2
+days = 7
+print(f"公司:{name}, 股票代码{stock_code}, 当前股价{stock_price}")
+print("每日增长率为:%s, 经过%d天上涨, 股价为:%.2f" % (growth, days, stock_price * (growth ** days)))
