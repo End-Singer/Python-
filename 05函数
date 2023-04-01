@@ -1,0 +1,94 @@
+# 本节包括，len函数，函数的定义语法，传入参数，返回值，None返回值，说明文档，局部变量和全局变量，方法的概念
+# 内置函数
+str1 = "高等数学"
+print("len函数的功能是统计字符串长度", len(str1))
+"""
+def 函数名(传入参数):
+    函数体
+    return 返回值
+传入参数和返回值可以省略，引用时直接用 函数名()
+"""
+number = 0
+def add(x, y):  # x, y是形式参数
+    """
+    函数的说明文档，通过多行注释对函数进行解释，
+    add函数可以接收两个参数，进行两数相加的功能。
+    :param x:形参x表示其中一个加数
+    :param y:形参y表示另一个加数
+    :return:返回值是两数相加的结果
+    """
+    global number  # global关键字使函数内的变量变成全局变量，对变量值的修改在函数内外都生效
+    number = x - y
+    result = x + y  # result是局部变量，只在函数体内部生效
+    return result  # 通过return向调用者返回数据, 函数体在执行完return后立即结束
+# 没有定义返回值的函数也有返回值，返回的内容是None，返回的内容类型是：<class 'NoneType'>，在判断中None等同于False
+
+"""
+方法和函数功能一样，在python中将函数定义为class（类）的成员，函数就会称为方法
+class student:
+    def add(self, x, y)
+    return x + y
+    
+    
+方法的使用num = student.add(1, 2)
+"""
+
+# 调用函数
+r = add(5, 10)  # 5和10是实际参数，和形参一一对应
+print(r)  # 变量r接收到了函数add的执行结果
+print(number)  # 调用全局变量
+
+money = 500000
+name = input("请输入您的姓名：")
+def check(show):
+    if show:
+        print("----------查询余额----------")
+    print(f"尊敬的{name}，您的账户当前余额为{money}元。")
+
+
+def save(num):
+    print("----------存款----------")
+    global money
+    money += num
+    print(f"已成功存入{num}元")
+    check(False)
+
+
+def get(num):
+    print("----------取款----------")
+    global money
+    if money - num >= 0:
+        money -= num
+        print(f"已成功取出{num}元")
+        check(False)
+    else:
+        check(False)
+        print("您的账户当前余额不足，无法取款")
+
+
+def main():
+    print("----------主菜单----------")
+    print(f"您好{name}，欢迎使用xx银行ATM，请选择需要的操作:")
+    print("查询余额\t [输入1]")
+    print("存款\t\t [输入2]")
+    print("取款\t\t [输入3]")
+    print("退出\t\t [输入4]")
+    print("请输入您的选择：", end='')
+    return input()
+
+
+while True:
+    key_input = main()
+    if key_input == "1":
+        check(True)
+        continue
+    elif key_input == "2":
+        save(int(input("请输入存款金额：")))
+        continue
+    elif key_input == "3":
+        get(int(input("请输入取款金额：")))
+        continue
+    else:
+        print("程序退出，感谢您的使用。")
+        break
+
