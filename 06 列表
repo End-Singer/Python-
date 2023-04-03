@@ -1,0 +1,77 @@
+# 列表list：可重复，可混装不同类型，有序，可修改
+"""
+列表：
+变量名称 = [元素1, 元素2, 元素3, 元素4, 元素5]
+变量名称 = []
+变量名称 = list()
+"""
+list1 = ["python", 10, True]  # 列表可以存储多个数据，可以是不同的数据类型，支持嵌套。
+print(f"正向读取\t列表[指定下标]:{list1[1]}")  # 列表[下标索引]，从前向后，从0开始，依次递增。不可超出范围。
+print(f"反向读取\t列表[反向指定下标]:{list1[-3]}")  # 列表反向下标索引，从后向前，从-1开始，依次递减。
+# 嵌套列表的下标索引 列表[外层的下标索引][内层的下标索引]
+
+print(f"查找下标\t列表.index[指定元素]:{list1.index(10)}")  # 查找指定元素在列表的下标
+list1[1] = 20  # 修改特定下标索引的值
+print(f"修改\t\t列表[指定下标] = 值:{list1}")
+
+list1.insert(2, "插入")  # 在指定下标位置插入指定元素
+print(f"插入\t\t列表.insert(指定下标):{list1}")
+
+list1.append("追加")  # 将一个元素追加到列表的尾部
+print(f"追加\t\t列表.append(元素):{list1}")
+
+list1 = ["python", 10]
+list1.extend("abc")  # 列表.extend(其他数据容器) 将其他数据容器的内容取出，依次追加到列表尾部
+print(f"整体追加\t列表.extend(其他数据容器):{list1}")
+
+list1 = ["python", 10]
+del list1[1]  # 删除指定下标元素
+print(f"下标删除\tdel 列表[指定下标]:{list1}")
+
+list1 = ["python", 10]
+element = list1.pop(0)  # 取出指定下标元素
+print(f"取出\t\t列表.pop(指定下标):{list1}, 取出的元素是{element}")
+
+list1 = ["python", 10, "python", 10]
+list1.remove(10)  # 删除某元素在列表中的第一个匹配项
+print(f"元素删除\t列表.remove(元素):{list1}")
+
+list1 = ["python", 10]
+list1.clear()  # 清空列表
+print(f"清空\t\t列表.clear():{list1}")
+
+list1 = ["python", "python", "python", "python"]
+print(f"统计元素\t列表.count(元素):{list1.count('python')}")  # 统计某元素在列表中的数量
+
+list1 = ["python", 10, True]
+print(f"统计总数\tlen(数据容器):{len(list1)}")  # 统计列表中元素数量，得到一个int数字
+
+list1 = ["python", 10, True]
+
+def while_list(l):
+    """
+    使用while循环遍历列表
+    :param l: 传入参数为列表
+    :return: None
+    """
+    n = 0
+    while n < len(l):
+        print(f"列表的元素：{l[n]}")
+        n += 1
+
+
+print("while循环遍历列表")
+while_list(list1)
+
+def for_list(l):
+    """
+    使用for循环遍历列表
+    :param l: 传入参数为列表
+    :return: None
+    """
+    for element in l:
+        print(f"列表的元素：{element}")
+
+
+print("for循环遍历列表")
+for_list(list1)
