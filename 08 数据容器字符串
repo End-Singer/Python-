@@ -1,0 +1,41 @@
+# 字符串str：有序，不可修改，只能存储字符串，可以重复
+str1 = "never gonna give you up"
+print(f"读取\t\t字符串[指定下标]:{str1[6]}")  # 字符串[下标索引]，从前向后，从0开始，依次递增。不可超出范围。
+print(f"反向读取\t字符串[反向指定下标]:{str1[-6]}")  # 字符串反向下标索引，从后向前，从-1开始，依次递减。
+
+print(f"查找下标\t字符串.index(指定元素):{str1.index('give')}")  # 查找指定字符的起始下标
+
+# 将字符串内全部字符串1替换为字符串2，生成为一个新字符串
+print(f"替换\t\t字符串.replace(字符串1, 字符串2):{str1.replace('n', 'N')}")
+
+# 按指定分割字符串，将字符串划分为多个字符串，并存入列表对象中
+print(f"分割\t\t字符串.split(分割字符串):{str1.split(' ')}")
+
+# 去除字符串前后空格和回车符，或传入参数去除前后指定字符串，生成为一个新字符串
+str1 = "  never gonna give you up  "
+print(f"规整\t\t字符串.strip():{str1.strip()}")
+str1 = "12never gonna give you upA21"
+print(f"规整\t\t字符串.strip(指定字符串):{str1.strip('12A')}")
+
+str1 = "never gonna give you up"
+print(f"统计字符\t字符串.count(字符):{str1.count('n')}")  # 统计某字符在字符串中的数量
+
+print(f"统计长度\t字符串.len(字符串):{len(str1)}")  # 统计字符串长度
+
+def while_str(s):
+    n = 0
+    while n < len(s):
+        print(f"字符串的字符：{str1[n]}")
+        n += 1
+
+
+print("while循环遍历字符串")
+while_str(str1)
+
+def for_str(s):
+    for string in s:
+        print(f"字符串的字符：{string}")
+
+
+print("for循环遍历字符串")
+for_str(str1)
