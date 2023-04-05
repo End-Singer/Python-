@@ -1,0 +1,55 @@
+# 字典 不可重复，不支持下标索引，key和value可以是任意类型(key不可以是字典)，可修改，无序
+"""
+字典：
+变量名称 = {key: value, key: value, key: value, key: value}
+变量名称 = {}
+变量名称 = dict()
+"""
+
+dict1 = {"A": 10, 20: "B", True: 30}  # 从字典中基于key获取value
+print(f"获取值\t字典[key]:{dict1[20]}")
+
+dict1["C"] = 40
+print(f"新增\t\t字典[新的key] = value:{dict1}")
+dict1["A"] = 50
+print(f"修改\t\t字典[已有的key] = value:{dict1}")
+
+value = dict1.pop(20)  # 获得指定key的value，同时字典被修改，指定key的数据被删除
+print(f"删除\t\t字典.pop(key) = value:{dict1}，得到值{value}")
+
+dict1.clear()
+print(f"清空字典\t字典.clear():{dict1}")
+
+dict1 = {"A": 10, 20: "B", True: 30}
+print(f"获取keys\t字典.keys():{dict1.keys()}")
+
+print(f"统计keys\tlen(数据类型):{len(dict1)}")
+
+# 返回字典中的所有键值对信息，返回的类型是字典视图
+print(f"字典视图\t字典.items():{dict1.items()}，{type(dict1.items())}")
+
+# for循环遍历
+def for_dict1(d):
+    """
+    对keys使用for循环遍历字典
+    :param d:传入参数是字典
+    :return:None
+    """
+    for key in d.keys():
+        print(f"{key}的value是:{d[key]}")
+
+
+for_dict1(dict1)
+
+# 直接对字典进行for循环，每次循环都会直接得到key
+def for_dict2(d):
+    """
+    直接对字典进行for循环
+    :param d:传入参数是字典
+    :return:None
+    """
+    for key in dict1:
+        print(f"{key}的value是:{d[key]}")
+
+
+for_dict2(dict1)
