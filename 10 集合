@@ -1,0 +1,49 @@
+# 集合 无序，不可重复，不支持下标索引，可修改,元素类型可以不同
+"""
+集合：
+变量名称 = {元素1, 元素2, 元素3, 元素4, 元素5}
+变量名称 = set()
+"""
+set1 = {"java", "c++"}
+set1.add('python')  # 将一个新元素添加到集合中
+print(f"添加元素\t\t集合.add(元素)：{set1}")
+
+set1.remove('python')  # 将一个指定元素从集合中删除
+print(f"删除元素\t\t集合.remove(元素)：{set1}")
+
+element = set1.pop()  # 将一个指定元素取出
+print(f"随机取元素\t集合.pop()：{set1}，随机取到{element}")
+
+set1.clear()  # 清空集合
+print(f"清空集合\t\t集合.clear()：{set1}")
+
+set1 = {10, 20, 30}
+set2 = {20, 30, 40}
+# 取出集合1和集合2的差集(集合1有而集合2没有的)，得到一个新集合，集合1和集合2不变
+print(f"差集\t\t\t集合1.difference(集合2)：{set1.difference(set2)}")  # 得到的是新集合
+
+# 消除两个集合的差集，对比集合1和集合2，在集合1内删除相同的元素，集合1被修改，集合2不变
+set1.difference_update(set2)
+print(f"消除差集\t\t集合1.difference_update(集合2)：{set1}")
+
+set1 = {10, 20, 30}
+set2 = {20, 30, 40}
+# 将集合1与集合2合并成新集合，得到新集合，集合1和集合2不变
+print(f"并集\t\t\t集合1.union(集合2)：{set1.union(set2)}")
+
+print(f"统计总数\t\tlen(数据容器):{len(set1)}")  # 统计集合中元素数量，得到一个int数字
+
+# 集合的遍历，因为集合不支持下标索引，所以不能用while循环遍历，但是可以用for循环遍历
+def for_set(s):
+    """
+    使用for循环遍历集合
+    :param s: 传入参数为集合
+    :return: None
+    """
+    for elem in s:
+        print(f"列表的元素：{elem}")
+
+
+set1 = {"10", 20, 3.5, True}
+print("for循环遍历集合")
+for_set(set1)
