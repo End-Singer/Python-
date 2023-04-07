@@ -1,0 +1,48 @@
+def true_return():
+    return 1, True, "真"
+
+
+x, y, z = true_return()  # 按照返回值的顺序，写对应顺序的多个变量接收即可，支持不同类型数据return
+print(f"函数多返回值\treturn 值1, 值2, 值3...:{x}, {y}, {z}")
+
+
+def func1(a, b):
+    return a, b
+
+
+print(f"位置参数\t\tfunc(传参1, 传参2){func1(1, 2)}")  # 传参形参一一对应
+print(f"关键字参数\tfunc(形参1 = 传参1, 形参2 = 传参2){func1(b=2, a=1)}")  # 用键=值传参，可以不按顺序
+
+
+def func2(a, b=0):  # 当调用参数时没有传递参数，就会使用默认的值，注意：默认的参数需要放在最后！
+    return a, b
+
+
+print(f"缺省参数\t\tfunc(传参1, 传参2或缺省){func2(1, 2)}{func2(1)}")
+
+
+def func3(*args):  # 传进的所有参数都会被args变量收集，并根据传入的位置生成一个元组
+    return args
+
+
+print(f"不定长参数位置传递\t\tfunc(*args):{type(func3(1, True, '真'))}")
+
+
+def func4(**kwargs):  # 传进的所有'键=值'都会被kwargs变量收集，并根据传入的位置生成一个字典
+    return kwargs
+
+
+print(f"不定长参数关键字传递\tfunc(**kwargs):{type(func4(key1=10, key2=20))}")
+
+
+def checkfunc(f):  # 这是一种计算逻辑的传递，而非数据的传递，任何逻辑都可自行定义并作为函数传入
+    f()
+    return "正常"
+
+
+print(f"函数作为参数传递\t\tfunc(func):{checkfunc(func3)}、{checkfunc(func4)}")  # 如测试函数不传入参数是否正常运行
+
+square = lambda a: a * a  # 和普通函数相比省去了函数名称，精简代码
+
+
+print(f"匿名函数\t\t变量名 = lambda 参数: 返回的表达式，调用：变量名(传参):{square(10)}")
