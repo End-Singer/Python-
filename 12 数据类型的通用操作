@@ -1,0 +1,37 @@
+"""
+总结：
+支持下标索引的：列表、元组、字符串；
+    不支持：集合、字典
+支持重复的：列表、元组、字符串
+    不支持：集合、字典
+支持修改的：列表、集合、字典
+    不支持：元组、字符串
+"""
+list1 = ["a", "b", "c"]
+print(f"统计数量\tlen(数据容器):{len(list1)}")
+
+str1 = "apple"  # 类型需要一样才能统计大小，字符串比较ASCII码值，字典比较value
+dict1 = {"k1": 10, "k2": 30, "k3": 20}
+print(f"统计最大\tmax(数据容器):{max(str1)}、{max(dict1)}")
+print(f"统计最小\tmin(数据容器):{min(str1)}、{min(dict1)}")
+
+str1 = "raw"  # 字符串转列表将每个字符都取出来，字典转列表只保留value
+dict1 = {"k1": 10, "k2": 30}
+print(f"转列表\tlist(数据容器):{list(str1)}、{list(dict1)}")
+
+str1 = "raw"  # 字符串转元组将每个字符都取出来，字典转元组只保留value
+dict1 = {"k1": 10, "k2": 30}
+print(f"转元组\ttuple(数据容器):{tuple(str1)}、{tuple(dict1)}")
+
+dict1 = {"k1": 10, "k2": 30}  # 转字符串符号会保留，字典转字符串值会保留
+print(f"转字符串\tstr(数据容器):{str(dict1)}")
+
+str1 = "apple"  # 转集合会去重，字符串转集合将每个字符都取出来，字典转集合只保留value
+dict1 = {"k1": 10, "k2": 30}
+print(f"转集合\tset(数据容器):{set(str1)}、{set(dict1)}")
+# 其他数据容器无法转字典
+
+str1 = "raw"  # 字符串按ASCII码值排序，字典按key排序，并生成一个列表对象返回
+dict1 = {"k1": 20, "k2": 10}
+print(f"排序\t\tsorted(数据容器):{sorted(str1)}、{sorted(dict1)}")
+print(f"反向排序\tsorted(数据容器, reverse=True):{sorted(str1, reverse=True)}")
