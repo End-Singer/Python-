@@ -1,0 +1,52 @@
+print("打开文件\tf = open('name', 'mode', encoding='')")
+"""
+open(): 函数, 打开一个已经存在的文件, 或者创建一个新文件
+name: 要打开的目标文件名的字符串(可以包含文件的路径)
+mode: 只读'r', 写入'w', 如果文件存在就追加到文件末尾'a', 打开磁盘文件读写'+', 创建一个新文件并打开它进行写入'x'
+encoding: 编码格式, 推荐UTF-8, encoding是关键字传参
+"""
+f = open("测试.txt", "r", encoding="Utf-8")
+
+read_num = f.read(5)  # num表示从文件中读取的字节数，省略表示读取全部，返回类型是字符串
+print(f"读取字节\t文件对象.read(字节数):{read_num}{type(read_num)}")
+f.close()  # 如果不关闭文件，系统会记录上次读取的位置并从该位置继续读取
+
+f = open("测试.txt", "r", encoding="Utf-8")
+read_lines_list = f.readlines()  # 按照行的方法把整个文件一次性读取，并将每行作为一个元素，返回成一个列表
+print(f"读取每行\t文件对象.readlines():{read_lines_list}")
+f.close()
+
+f = open("测试.txt", "r", encoding="Utf-8")
+read_line = f.readline()  # 调用一次读取一行，将该行作为字符串返回
+print(f"读取单行\t文件对象.readline():{type(read_line)}")
+f.close()
+
+f = open("测试.txt", "r", encoding="Utf-8")
+for line in f:  # 变量 in 文件对象，每次循环得到每一行的数据
+    print(f"循环读取行:{line}", end="")
+f.close()  # 停掉文件的占用
+
+print()
+with open("测试.txt", "r", encoding="Utf-8") as f:  # 可以在操作完成后自动关闭文件
+    print(f"自动关闭\twith open() as f:\n{f.read()}")
+
+print("单词计数")
+with open("测试.txt", "r", encoding="Utf-8") as f:
+    clean_tuple = tuple(f.read().replace("\n", ""))  # 转元组(文件读取.字符串替换)
+    num_value = 0  # 每个字符的初始数量0
+    dict1 = {}  # 定义空字典
+    for element in clean_tuple:  # 遍历元组
+        num_value = clean_tuple.count(element)  # 统计元组各个元素数量赋值给num_value，作为字典元素的值
+        dict1[element] = num_value  # 字典新增元素"键(元组的元素) = 值(num_value)
+    dict_items = sorted(dict1.items(), key = lambda kv:(kv[1], kv[0]), reverse=True)
+    # 反向排序(字典视图, 值 = key 匿名函数交换位置)
+    for every_value in dict_items:
+        print(every_value)
+
+f = open("测试.txt", "w", encoding="Utf-8")  # 写入模式，文件不存在会创建文件，文件存在会清空文件里的内容
+f.write("54321\n12345")  # 内容写入
+f.flush()  # 内容刷新，刷新之后才能写入硬盘
+f.close()  # close自带flush功能
+f = open("测试.txt", "r", encoding="Utf-8")
+print(f"写入内容\t文件对象.write(内容):\n{f.read()}")
+# a模式，追加模式，如果文件不存在会创建文件，如果文件存在会在原有内容后面继续写入
