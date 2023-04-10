@@ -1,0 +1,66 @@
+print("捕获异常\ttry:\n\t\t\t可能发生异常的语句\n\t\texcept:\n\t\t\t发生异常执行的语句")
+print(
+    "指定异常\ttry:\n\t\t\t可能发生异常的语句\n\t\texcept 指定异常(多个异常) as e(异常信息):\n\t\t\t发生异常执行的语句")
+# 异常信息可以被变量e接收
+"""
+try:
+    可能发生异常的语句
+except 指定异常(多个异常) as e(别名):
+    发生异常执行的语句
+except Exception:  # 捕获所有异常
+    发生异常执行的语句
+else:  # else可不写
+    没有发生异常执行的语句
+finally:
+    无论是否发生异常都执行的语句
+"""
+
+
+# 异常的传递
+def func1():
+    num = 1 / 0
+    return num
+
+
+def main():  # 使用异常的传递不用再底层就使用try catch只在最高层捕获即可
+    try:
+        func1()
+    except Exception as e:
+        return e
+
+
+print(f"异常传递\t底层函数的异常可以在更高层的函数内捕获：{main()}")
+"""
+[from 模块名] import [模块 | 类 | 变量 | 函数 | *(模块全部内容) ] as [别名]
+from 模块名 import 类、方法等
+from 模块名 import *
+import 模块名 as 别名
+from 模块名 import 功能名 as 别名
+"""
+print("模块导入\t[from 模块名] import [模块 | 类 | 变量 | 函数 | *(模块全部内容) ] as [别名]")
+from time import sleep as s
+s(0)  # 直接调用
+# 自定义模块，新建.py文件，并在其中定义函数即可
+print("自定义模块\t自定义模块，新建.py文件，并在其中定义函数即可")
+if __name__ == '__main__':
+    # __name__和__main__是python的内置变量，在pycharm中右键运行会将变量的名字自动标记为main，即if为true
+    # 此方法可以让语句在右键运行时执行，而在import调用时不自动执行
+    print("__main__变量\t只在右键时执行下方语句")
+# __all__变量，如果模块文件中有__all__ = [列表]，当使用from 模块名 import *时只能使用列表中的元素
+print("__all__变量\t__all__ = [列表]")
+
+"""
+python包package实际是一个文件夹，包含一个__init__.py文件和多个模块文件
+import 包名.模块名
+调用：包名.模块名.目标  # 点.表示层级关系
+"""
+print("包的调用\timport 包名.模块名\n\t\t包名.模块名.目标")
+"""
+form 包名 import 模块名  # import后面的是调用时要写的最高层级
+调用：模块名. 目标
+"""
+
+print("包的调用\tform 包名 import 模块名\n\t\t模块名.目标")
+# 在__init__.py中写入__all__变量可以控制包的import * 的行为
+print('安装第三方包\tpycharm安装')
+print('安装第三方包\t在命令提示符中输入pip install 包名\n使用其他网站如:pip install -i http://pypi.tuna.tsinghua.edu.cn/simple 包名')
